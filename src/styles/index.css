@@ -1,0 +1,159 @@
+@import "tailwindcss";
+
+@layer base {
+  :root {
+    --color-teal-deep: #0F2B2A;
+    --color-teal-accent: #14B8A6;
+    --color-teal-bright: #0D9488;
+    --color-orange-accent: #F97316;
+    --color-orange-bright: #EA580C;
+    --color-light-bg: #FFFFFF;
+    --color-light-surface: #F8FAFC;
+    --color-light-card: #FFFFFF;
+    --color-slate-body: #334155;
+    --color-slate-heading: #0F172A;
+  }
+
+  body {
+    background-color: var(--color-light-bg);
+    color: var(--color-slate-body);
+    font-family: 'Plus Jakarta Sans', 'Inter', system-ui, -apple-system, sans-serif;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Space Grotesk', 'Plus Jakarta Sans', sans-serif;
+    color: var(--color-slate-heading);
+  }
+
+  code, pre, .font-mono, [class*="font-mono"] {
+    font-family: 'Plus Jakarta Sans', 'Inter', system-ui, -apple-system, sans-serif !important;
+  }
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: #F8FAFC;
+}
+::-webkit-scrollbar-thumb {
+  background: #CBD5E1;
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #14B8A6;
+}
+
+/* Custom Light Glassmorphism & Cards */
+.glass-panel {
+  background: rgba(255, 255, 255, 0.92);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(15, 23, 42, 0.08);
+}
+
+.glass-panel-hover {
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.glass-panel-hover:hover {
+  background: #FFFFFF;
+  border-color: rgba(20, 184, 166, 0.4);
+  box-shadow: 0 12px 35px -10px rgba(15, 23, 42, 0.08), 0 0 20px -5px rgba(20, 184, 166, 0.15);
+}
+
+/* Dual Light Gradient Text (Deep Emerald to Cyber Teal & Orange) */
+.text-gradient-brand {
+  background: linear-gradient(135deg, #0F2B2A 0%, #0D9488 60%, #F97316 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.text-gradient-teal {
+  background: linear-gradient(135deg, #0F2B2A 0%, #14B8A6 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.text-gradient-orange {
+  background: linear-gradient(135deg, #EA580C 0%, #F97316 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Light Noise Texture Layer */
+.bg-noise {
+  background-image: radial-gradient(rgba(15, 23, 42, 0.03) 1px, transparent 0);
+  background-size: 24px 24px;
+}
+
+/* Custom Pulsing Node Animation */
+@keyframes nodePulse {
+  0%, 100% {
+    transform: scale(1);
+    opacity: 0.9;
+  }
+  50% {
+    transform: scale(1.12);
+    opacity: 1;
+    filter: drop-shadow(0 0 12px rgba(20, 184, 166, 0.4));
+  }
+}
+
+.animate-node-pulse {
+  animation: nodePulse 3s infinite ease-in-out;
+  transform-origin: center;
+  transform-box: fill-box;
+}
+
+@keyframes signalFlow {
+  0% {
+    stroke-dashoffset: 100;
+  }
+  100% {
+    stroke-dashoffset: 0;
+  }
+}
+
+.animate-signal-flow {
+  stroke-dasharray: 8 8;
+  animation: signalFlow 2s linear infinite;
+}
+
+/* Infinite Marquee Animations for Industries We Serve */
+@keyframes marqueeLeft {
+  0% {
+    transform: translateX(0%);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+@keyframes marqueeRight {
+  0% {
+    transform: translateX(-50%);
+  }
+  100% {
+    transform: translateX(0%);
+  }
+}
+
+.animate-marquee-left {
+  display: flex;
+  width: max-content;
+  animation: marqueeLeft 35s linear infinite;
+  will-change: transform;
+}
+
+.animate-marquee-right {
+  display: flex;
+  width: max-content;
+  animation: marqueeRight 35s linear infinite;
+  will-change: transform;
+}
+
+.animate-marquee-left:hover,
+.animate-marquee-right:hover {
+  animation-play-state: paused;
+}
